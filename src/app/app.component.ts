@@ -8,14 +8,21 @@ import { Pokemon } from './pokemon';
 })
 export class AppComponent implements OnInit {
   pokemonList: Pokemon[] = POKEMONS;
+  pokemonSelected?: Pokemon;
 
   ngOnInit() {
     console.table(this.pokemonList);
   }
 
-  selectPokemon(event: MouseEvent) {
-    // .value par défaut renvoie une string, je dois donc le convertir en nombre. J'utilise l'opérateur + pour transformer ce qui se trouve à droite en un nombre
-    const index: number = +(event.target as HTMLInputElement).value;
-    console.log(`Vous avez cliqué sur le pokémon ${this.pokemonList[index].name}`);
+  selectPokemon(pokemonId: string) {
+    const pokemon: Pokemon | undefined = this.pokemonList.find(pokemon => pokemon.id == +pokemonId);
+
+    if (pokemon) {
+      console.log(`Vous avez demandé le pokémon ${pokemon.name}`);
+      this.pokemonSelected = pokemon;
+    } else {
+      console.log(`Vous avez demandé un pokémon qui n'existe pas`);
+      this.pokemonSelected = pokemon;
+    }
   }
 }

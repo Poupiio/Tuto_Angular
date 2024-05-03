@@ -1,6 +1,13 @@
 <h1>Liste de Pokémons</h1>
 <ul>
-   <input type="number" (click)="selectPokemon($event)">
+   <!-- J'utilise l'event keyup pour intercepter l'évènement à chaque fois que l'utilisateur tape quelque chose -->
+  <input
+      type="number"
+      #input
+      (keyup)="selectPokemon(input.value)"
+   />
+   <!-- Le contenu de l'input sera affiché ici grâce à #input -->
+   <li>{{ pokemonSelected?.name }}</li>
    <li>{{ pokemonList[0].name }}</li>
    <li>{{ pokemonList[1].name }}</li>
    <li>{{ pokemonList[2].name }}</li>
