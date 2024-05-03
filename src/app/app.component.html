@@ -46,7 +46,7 @@ Au lieu de tout taper à la main, on va utiliser *ngFor
 <div class="container">
    <div class="row">
       <div class="col m4 s6" *ngFor="let pokemon of pokemonList">
-         <div class="card">
+         <div class="card" pkmnBorderCard>
             <div class="card-image">
                <img [src]="pokemon.picture">
             </div>
