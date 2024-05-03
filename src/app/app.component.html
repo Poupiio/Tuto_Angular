@@ -1,24 +1,24 @@
-<h1>Liste de Pokémons</h1>
+<h1 class="center">Liste de Pokémons</h1>
 
 <!-- (J'utilise l'event keyup pour intercepter l'évènement à chaque fois que l'utilisateur tape quelque chose)
 J'utilise keyup.enter pour détecter lorsque l'utilisateur appuie sur Entrée afin de déclencher l'évènement à ce moment-là
--->
+
 <input
    type="number"
    #input
    (keyup.enter)="selectPokemon(input.value)"
 />
-<!-- Le contenu de l'input sera affiché ici grâce à #input
+Le contenu de l'input sera affiché ici grâce à #input
 *ngIf permet de conditionner l'affichage. Grâce à la variable pokemonSelected qui repère si un pokemon a été sélectionné ou non, l'affichage de cette partie se fera en fonction de cette variable
--->
+
 <P *ngIf="pokemonSelected">
    Vous avez sélectionné le pokémon : {{ pokemonSelected.name }}
 </P>
-<!-- Quand je n'ai aucun pokemon de trouvvé -->
+Quand je n'ai aucun pokemon de trouvé
 <P *ngIf="!pokemonSelected">
    Aucun pokémon n'a été trouvé.
 </P>
-
+-->
 
 <!-- <ul>
    <li>{{ pokemonList[0].name }}</li>
@@ -36,9 +36,25 @@ J'utilise keyup.enter pour détecter lorsque l'utilisateur appuie sur Entrée af
 </ul> 
 Au lieu de tout taper à la main, on va utiliser *ngFor
 -->
-<ul>
+<!-- <ul> -->
    <!-- Je déclare ma boucle grâce au tableau initialisé dans le composant -->
-   <li *ngFor="let pokemon of pokemonList">
+   <!-- <li *ngFor="let pokemon of pokemonList">
       {{ pokemon.name }}
    </li>
-</ul>
+</ul> -->
+
+<div class="container">
+   <div class="row">
+      <div class="col m4 s6" *ngFor="let pokemon of pokemonList">
+         <div class="card">
+            <div class="card-image">
+               <img [src]="pokemon.picture">
+            </div>
+            <div class="card-content">
+               <p class="card-title">{{ pokemon.name }}</p>
+               <p><small>{{ pokemon.created }}</small></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
