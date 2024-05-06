@@ -1,23 +1,10 @@
-<h1 class="center">Liste de Pokémons</h1>
-
-<div class="container">
-   <div class="row">
-      <div class="col m4 s6" *ngFor="let pokemon of pokemonList">
-         <div class="card horizontal" pkmnBorderCard>
-            <div class="card-image">
-               <img [src]="pokemon.picture">
-            </div>
-            <div class="card-stacked">
-               <div class="card-content">
-                  <p class="card-title">{{ pokemon.name }}</p>
-                  <p><small>{{ pokemon.created | date:"dd/MM/yyyy" }}</small></p>
-                  <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">
-                     {{ type
-                     }}
-                  </span>
-               </div>
-            </div>
-         </div>
-      </div>
+<nav>
+   <div class="nav-wrapper teal">
+      <a href="#" class="brand-logo center">
+         Pokédex
+      </a>
    </div>
-</div>
+</nav>
+
+<!-- Si l'utilisateur cherche une route spécifique, à ce moment-là on charge le composant adéquat -->
+<router-outlet></router-outlet>
